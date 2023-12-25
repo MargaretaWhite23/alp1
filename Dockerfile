@@ -6,4 +6,5 @@ FROM ubuntu:focal-20220531
 COPY build-kernel-github-actions.sh /build-kernel-github-actions.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
+RUN chmod +x /build-kernel-github-actions.sh
 ENTRYPOINT ["/build-kernel-github-actions.sh"]
