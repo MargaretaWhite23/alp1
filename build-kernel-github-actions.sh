@@ -2,7 +2,7 @@
 set -e o pipefail
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
-###watch for A GLIBC VERSION MISMATCH if build/user os is different
+####watch for A GLIBC VERSION MISMATCH if build/user os is different
 build_badvpn() {
   apt install -y cmake build-essential screen vim unzip curl openssl
   mkdir build; cd build
