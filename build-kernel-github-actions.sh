@@ -42,19 +42,17 @@ chmod -R 777 /var/cache/
 
 chown -R abuild3:abuild3 /github/workspace/aports
 
+cp /installrsakey.sh /home/abuild3/installrsakey.sh
+chmod +x /home/abuild3/installrsakey.sh
+chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
+
+su -c "./home/abuild3/installrsakey.sh" -m abuild3 
+su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 
+
+: <<'END'
 sudo -i -u abuild3 bash << EOF
-
-ou=$(echo -e "\n\n\n" | abuild-keygen 2>&1)
-echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g'
-rsapub=$(echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g')
-rsa=$(echo $rsapub|grep -oE '/.*\.rsa')
-mkdir -p ~/.abuild
-echo 'PACKAGER_PRIVKEY="$rsa"'>~/.abuild/abuild.conf
-cd /github/workspace/aports/main/linux-lts
-abuild
-
 EOF
-
+END
 
 ##adduser abuild3
 
