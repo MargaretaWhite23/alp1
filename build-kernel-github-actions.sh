@@ -33,7 +33,28 @@ apk add initramfs-generator perl gmp-dev mpc1-dev mpfr-dev elfutils-dev bash fle
 git config --global user.name "Your Full Name"
 git config --global user.email "your@email.address"
 git clone https://gitlab.alpinelinux.org/alpine/aports
+
+apk add bash sudo
+
+echo -e '123\n123' | adduser abuild3
+
 chmod -R 777 /var/cache/
+
+chown -R abuild3:abuild3 /github/workspace/aports
+
+sudo -i -u abuild3 bash << EOF
+
+ou=$(echo -e "\n\n\n" | abuild-keygen 2>&1)
+echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g'
+rsapub=$(echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g')
+rsa=$(echo $rsapub|grep -oE '/.*\.rsa')
+mkdir -p ~/.abuild
+echo 'PACKAGER_PRIVKEY="$rsa"'>~/.abuild/abuild.conf
+cd /github/workspace/aports/main/linux-lts
+abuild
+
+EOF
+
 
 ##adduser abuild3
 
