@@ -5,6 +5,6 @@ echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g'
 rsapub=$(echo $ou | grep -oE ' \/home\/(.)*\.rsa\.pub' | sed 's/ //g')
 rsa=$(echo $rsapub|grep -oE '/.*\.rsa')
 mkdir -p /home/abuild3/.abuild
-echo 'PACKAGER_PRIVKEY="$rsa"'>/home/abuild3/.abuild/abuild.conf
+echo "PACKAGER_PRIVKEY="$rsa"">/home/abuild3/.abuild/abuild.conf
 
 
