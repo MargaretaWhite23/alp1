@@ -55,7 +55,7 @@ chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
 ###hack to allow abuild/abuild-keygen to work
 mkdir -p .abuild
 chown -R abuild3:abuild3 .abuild
-
+chown -R abuild3:abuild3 /github/home/
 
 
 su -c "/home/abuild3/installrsakey.sh" -m abuild3 
