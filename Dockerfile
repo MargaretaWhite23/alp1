@@ -1,3 +1,6 @@
+#to build this from a docker vps:
+#docker image build -t alpine . -f Dockerfile
+
 # Container image that runs your code
 #FROM debian:unstable
 #FROM ubuntu:focal-20220531
