@@ -1,6 +1,9 @@
 #to build this from a docker vps:
 #docker image build -t alpine . -f Dockerfile
 #docker run -d -i -t alpine /bin/bash
+#start with different entry point for debugging:
+#docker commit $CONTAINER_ID user/test_image
+#docker run -ti --entrypoint=bash user/test_image
 ###https://docs.docker.com/guides/walkthroughs/run-a-container/
 ###
 
