@@ -4,6 +4,9 @@
 #start with different entry point for debugging:
 #docker commit $CONTAINER_ID user/test_image
 #docker run -ti --entrypoint=bash user/test_image
+##enable ssh
+#docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container-ID-or-name>
+
 ###https://docs.docker.com/guides/walkthroughs/run-a-container/
 ###
 
