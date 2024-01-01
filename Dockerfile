@@ -1,6 +1,6 @@
 #to build this from a docker vps:
 #docker image build -t alpine . -f Dockerfile
-#docker run -i -t alpine /bin/bash
+#docker run -d -i -t alpine /bin/bash
 ###https://docs.docker.com/guides/walkthroughs/run-a-container/
 ###
 
